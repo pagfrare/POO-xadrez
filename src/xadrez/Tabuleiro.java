@@ -28,11 +28,11 @@ public class Tabuleiro {
         for(int linha = 0; linha < 8; linha++) {
             for(int coluna = 0; coluna < 8; coluna++) {
                if(tabuleiro[linha][coluna].estaOcupada()) {
-			        Peca p = tabuleiro[linha][coluna].getPeca;
+			        Peca p = tabuleiro[linha][coluna].getPeca();
 			        p.desenho();
 			        continue;
 		        }
-		        if(tabuleiro[linha][coluna].getCor == 'P') {
+		        if(tabuleiro[linha][coluna].getCor() == 'P') {
 			        System.out.println("1");
 		        } else {
 			        System.out.println("0");
