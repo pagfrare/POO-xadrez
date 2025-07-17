@@ -26,9 +26,17 @@ public class Tabuleiro {
     public String desenho() {
         String resultado = "";
         for(int linha = 0; linha < 8; linha++) {
-            resultado += "|";
             for(int coluna = 0; coluna < 8; coluna++) {
-                resultado += tabuleiro[linha][coluna].getCor() + "|";
+               if(tabuleiro[linha][coluna].estaOcupada()) {
+			        Peca p = tabuleiro[linha][coluna].getPeca;
+			        p.desenho();
+			        continue;
+		        }
+		        if(tabuleiro[linha][coluna].getCor == 'P') {
+			        System.out.println("1");
+		        } else {
+			        System.out.println("0");
+		        }
             }
             resultado += "\n";
         }
