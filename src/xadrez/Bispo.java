@@ -5,79 +5,88 @@ package xadrez;
  * @author G1 (Felipe(834688), Felipe(834732), Pedro(834765))
  */
 public class Bispo extends Peca {
+
+    public Bispo(char cor) {
+        super(cor);
+    }
+
     @Override
     public String desenho() {
-        if(cor == 'P')
+        if (cor == 'P') {
             return "B";
+        }
         return "b";
     }
-    
+
     @Override
-    public boolean movimentoValido(int linhaO, char colunaO, int linhaD, char colunaD) {  
-        if(linhaO == linhaD && colunaO == colunaD)
-           return false;
-        
+    public boolean movimentoValido(int linhaO, char colunaO, int linhaD, char colunaD) {
+        if (linhaO == linhaD && colunaO == colunaD) {
+            return false;
+        }
+
         int diferencaLinha;
         int diferencaColuna;
-        
-        if(colunaO > colunaD)
+
+        if (colunaO > colunaD) {
             diferencaColuna = colunaO - colunaD;
-        else 
+        } else {
             diferencaColuna = colunaD - colunaO;
-        if(linhaO > linhaD)
+        }
+        if (linhaO > linhaD) {
             diferencaLinha = linhaO - linhaD;
-        else
+        } else {
             diferencaLinha = linhaD - linhaO;
-        
-        if(diferencaLinha == diferencaColuna)
+        }
+
+        if (diferencaLinha == diferencaColuna) {
             return true;
-        
-        
+        }
+
         return false;
     }
-    
+
     @Override
     public String caminho(int linhaO, char colunaO, int linhaD, char colunaD) {
         String caminho = "";
         int linha = linhaO;
         char coluna = colunaO;
-        if(linhaO < linhaD) {
-            if(colunaO < colunaD) {
-                while(linha <= linhaD) {
+        if (linhaO < linhaD) {
+            if (colunaO < colunaD) {
+                while (linha <= linhaD) {
                     caminho += Integer.toString(linha);
-                    caminho+= coluna;
+                    caminho += coluna;
                     linha++;
                     coluna++;
                 }
             } else {
-                while(linha <= linhaD) {
+                while (linha <= linhaD) {
                     caminho += Integer.toString(linha);
-                    caminho+= coluna;
+                    caminho += coluna;
                     linha++;
                     coluna--;
                 }
             }
-            
+
         } else {
-            if(colunaO < colunaD) {
-                while(linha >= linhaD) {
+            if (colunaO < colunaD) {
+                while (linha >= linhaD) {
                     caminho += Integer.toString(linha);
-                    caminho+= coluna;
+                    caminho += coluna;
                     linha--;
                     coluna++;
                 }
             } else {
-                while(linha >= linhaD) {
+                while (linha >= linhaD) {
                     caminho += Integer.toString(linha);
-                    caminho+= coluna;
+                    caminho += coluna;
                     linha--;
                     coluna--;
                 }
             }
-            
+
         }
-        
+
         return caminho;
-        
+
     }
 }
