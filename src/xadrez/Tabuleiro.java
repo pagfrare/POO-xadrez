@@ -1,7 +1,7 @@
 package xadrez;
 
 /**
- *
+ * 
  * @author Felipe Ferreira Barros
  */
 public class Tabuleiro {
@@ -36,7 +36,7 @@ public class Tabuleiro {
     }
     
     public boolean noLimite(int linha, int coluna) {
-        
+        return linha >= 0 && linha < 8 && coluna >= 0 && coluna < 8;
     }
     
     

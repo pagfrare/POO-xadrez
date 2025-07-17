@@ -30,7 +30,7 @@ public class Casa {
     }
     
     public boolean isOcupada(){
-        return ocupada;
+        return this.ocupada!=null;
     }
     
     public void setOcupada(Peca peca){
