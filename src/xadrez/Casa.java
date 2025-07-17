@@ -28,8 +28,12 @@ public class Casa {
     public int getColuna() {
         return coluna;
     }
+
+    public Peca getPeca() {
+        return ocupada;
+    }
     
-    public boolean isOcupada(){
+    public boolean estaOcupada(){
         return this.ocupada!=null;
     }
     
