@@ -40,4 +40,8 @@ public class Casa {
     public void setOcupada(Peca peca){
         this.ocupada = peca;
     }
+    
+    public Peca getOcupada(){
+        return this.ocupada;
+    }
 }
