@@ -7,10 +7,10 @@ package xadrez;
 public class Casa {
     private char cor;
     private int linha;
-    private int coluna;
+    private char coluna;
     private Peca ocupada;
     
-    public Casa(char cor, int linha, int coluna) {
+    public Casa(char cor, int linha, char coluna) {
         this.cor = cor;
         this.linha = linha;
         this.coluna = coluna;
@@ -25,7 +25,7 @@ public class Casa {
         return linha;
     }
     
-    public int getColuna() {
+    public char getColuna() {
         return coluna;
     }
 
