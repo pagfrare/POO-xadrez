@@ -23,7 +23,24 @@ public class Cavalo extends Peca {
         if (linhaO == linhaD && colunaO == colunaD) {
             return false;
         }
-        return true;
+        int diferencaLinha = linhaO - linhaD;
+        int diferencaColuna = colunaO - colunaD;
+        if(diferencaLinha < 0) {
+            diferencaLinha = -diferencaLinha;
+        }
+        if(diferencaColuna < 0) {
+            diferencaColuna = -diferencaColuna;
+        }
+        
+        if(diferencaLinha == 2 && diferencaColuna == 1) {
+            return true;
+        }
+        if(diferencaLinha == 1 && diferencaColuna == 2) {
+            return true;
+        }
+        
+        
+        return false;
     }
 
     @Override
