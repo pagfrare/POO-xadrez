@@ -1,13 +1,17 @@
 package xadrez;
+
 /**
  *
- * @author G1 (Felipe(834688), Felipe(834732), Pedro(834765))
+ * @author G1 (Felipe Ferreira(834688), Felipe da Rocha(834732), Pedro Augusto(834765), João Henrique(822428))
  *
  */
+
 import java.io.File;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.InputMismatchException;
+
 public class Gerenciador {
     public static void main(String[] args) {
         /* Teste do cavalo:
@@ -51,5 +55,41 @@ public class Gerenciador {
             return false;
         }
         return true;
+    }
+    private static double getDouble(Scanner ler){
+        double temp = 0;
+        boolean valido;
+        do{
+            try{
+                valido = true;
+                temp = ler.nextDouble();
+                limparBuffer(ler);
+            }catch(InputMismatchException e){
+                valido = false;
+                System.out.println("Digite um numero valido");
+                limparBuffer(ler);
+            }
+        }while(!valido);
+        return temp;
+    }
+    private static int getInt(Scanner ler){
+        int temp = 0;
+        boolean valido;
+        do{
+            try{
+                valido = true;
+                temp = ler.nextInt();
+                limparBuffer(ler);
+            }catch(InputMismatchException e){
+                valido = false;
+                System.out.println("Digite um numero valido");
+                limparBuffer(ler);
+            }
+        }while(!valido);
+        return temp;
+    }
+    private static void limparBuffer(Scanner ler){
+        ler.nextLine(); //Sempre que usar um ler.next que não consome \n, limpar o buffer de 
+                        //entrada impede leituras inesperadas. tambem serve pra limpar o buffer em caso de exception
     }
 }

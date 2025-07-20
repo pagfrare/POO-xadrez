@@ -2,9 +2,10 @@ package xadrez;
 
 /**
  *
- * @author G1 (Felipe(834688), Felipe(834732), Pedro(834765))
+ * @author G1 (Felipe Ferreira(834688), Felipe da Rocha(834732), Pedro Augusto(834765), João Henrique(822428))
  *
  */
+
 public abstract class Peca {
 
     // B para branco e P para preto
@@ -26,6 +27,12 @@ public abstract class Peca {
     //Será que faz verificação? ou se tem que botar try/catch?
     public void setCor(char cor) {
         this.cor = cor;
+    }
+    public char getCor(){
+        return cor;
+    }
+    public boolean capturada(){
+        return capturada;
     }
 
 }

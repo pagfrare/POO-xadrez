@@ -1,10 +1,13 @@
 package xadrez;
+
 /**
  *
- * @author G1 (Felipe(834688), Felipe(834732), Pedro(834765))
+ * @author G1 (Felipe Ferreira(834688), Felipe da Rocha(834732), Pedro Augusto(834765), João Henrique(822428))
  *
  */
+
 import java.util.ArrayList;
+
 public class Caminho {
     private ArrayList<Casa> sequencia;
     
