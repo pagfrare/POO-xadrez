@@ -41,6 +41,16 @@ public class Tabuleiro {
         }
         return resultado;
     }
+    
+    public Casa getCasa(int linha, char coluna) {
+        int indiceLinha = linha -1;
+        int indiceColuna = coluna - 'a';
+        
+        if(noLimite(linha, coluna)) {
+            return tabuleiro[indiceLinha][indiceColuna];
+        }
+        return null;
+    }
 
     public boolean noLimite(int linha, char coluna) {
         return linha >= 1 && linha <= 8 && coluna >= 'a' && coluna <= 'h';

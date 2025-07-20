@@ -70,14 +70,26 @@ public class Peao extends Peca {
     @Override
     public String caminho(int linhaO, char colunaO, int linhaD, char colunaD) {
         String caminho = "";
-
-        if (colunaO == colunaD) {
+        
+        if(cor == 'P') {
+            if (colunaO == colunaD) {
+            for (int i = linhaO; i >= linhaD; i--) {
+                caminho += Integer.toString(i) + colunaO;
+            }
+        } else {
+            caminho += Integer.toString(linhaO) + colunaO + Integer.toString(linhaD) + colunaD;
+        }
+        } else {
+            if (colunaO == colunaD) {
             for (int i = linhaO; i <= linhaD; i++) {
                 caminho += Integer.toString(i) + colunaO;
             }
         } else {
-            caminho += Integer.toString(linhaO) + colunaO + Integer.toString(linhaO + 1) + colunaO + Integer.toString(linhaO + 1) + colunaD;
+            caminho += Integer.toString(linhaO) + colunaO + Integer.toString(linhaD) + colunaD;
         }
+        }
+
+        
 
         return caminho;
     }

@@ -6,25 +6,26 @@ package xadrez;
  *
  */
 
-import java.util.ArrayList;
-
 public class Caminho {
-    private ArrayList<Casa> sequencia;
+    private Tabuleiro tabuleiro;
+    private String caminho;
     
     
-    public Caminho(ArrayList<Casa> sequencia) {
-        this.sequencia = sequencia;
+    public Caminho(Tabuleiro tabuleiro, String caminho) {
+        this.tabuleiro = tabuleiro;
+        this.caminho = caminho;
     }
     
     
     public boolean estaLivre() {
-        if(sequencia == null || sequencia.size() <= 2) {
-            return true;
-        }
-        
-        for(int i = 1;i<sequencia.size() - 1; i++) {
-            Casa casa = sequencia.get(i);
-            if(casa.getOcupada() != null) {
+        int tamanho = caminho.length(); 
+        int linha;
+        char coluna;
+        for(int i = 2; i < tamanho-2; i = i + 2) {
+            linha = Character.getNumericValue(caminho.charAt(i));
+            coluna = caminho.charAt(i + 1);
+            Casa c = tabuleiro.getCasa(linha, coluna);
+            if(c.getOcupada() != null) {
                 return false;
             }
         }
@@ -32,25 +33,17 @@ public class Caminho {
     }
     
     public Casa casaInicial() {
-        if(sequencia != null && !sequencia.isEmpty()) {
-            return sequencia.get(0);
-        }
-        return null;
+        int linha = Character.getNumericValue(caminho.charAt(0));
+        char coluna = caminho.charAt(1);
+        
+        return(tabuleiro.getCasa(linha, coluna));
     }
     
     public Casa casaFinal() {
-        if(sequencia!=null&&!sequencia.isEmpty()) {
-            return sequencia.get(sequencia.size() - 1);
-        }
-        return null;
-    }
-    
-    public ArrayList<Casa> getSequencia(){
-        return sequencia;
-    }
-    
-    public void setSequencia(ArrayList<Casa> sequencia) {
-        this.sequencia = sequencia;
+        int linha = Character.getNumericValue(caminho.charAt(caminho.length() - 1));
+        char coluna = caminho.charAt(caminho.length());
+        
+        return(tabuleiro.getCasa(linha, coluna));
     }
     
 }
