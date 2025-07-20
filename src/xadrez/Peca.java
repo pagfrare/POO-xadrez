@@ -24,10 +24,6 @@ public abstract class Peca {
 
     protected abstract String caminho(int linhaO, char colunaO, int linhaD, char colunaD);
 
-    //Será que faz verificação? ou se tem que botar try/catch?
-    public void setCor(char cor) {
-        this.cor = cor;
-    }
     public char getCor(){
         return cor;
     }
