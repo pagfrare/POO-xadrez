@@ -27,7 +27,7 @@ public abstract class Peca {
     public char getCor(){
         return cor;
     }
-    public boolean capturada(){
+    public boolean getCapturada(){
         return capturada;
     }
 

@@ -11,14 +11,29 @@ public class Jogada {
     private char colunaO, colunaD;
     private Caminho caminho;
     private Jogador jogador;
+    private Tabuleiro tabuleiro; //Pra jogada "conhecer" o tabuleiro
     public Jogada(){
     }
     public boolean ehValida(){
-        if(linhaO <= 8)
+        if(!tabuleiro.noLimite(linhaO, colunaO)){
+            return false;
+        }
+        if(!tabuleiro.noLimite(linhaD, colunaD)){
+            return false;
+        }
+        if(!caminho.casaInicial().estaOcupada()){
+            return false;
+        }
+        if(caminho.casaInicial().getPeca().getCor() != jogador.getCor()){
+            return false;
+        }
         if(caminho.casaFinal().estaOcupada()){
             if(caminho.casaFinal().getPeca().getCor() == jogador.getCor()){
                 return false;
             }
+        }
+        if(!tabuleiro.getCasa(linhaO,colunaO).getPeca().movimentoValido(linhaO, colunaO, linhaD, colunaD)){
+            return false;
         }
         return true;
     }
@@ -27,5 +42,8 @@ public class Jogada {
     }
     public boolean ehXequeMate(){
         return true;
+    }
+    public String getJogada(){
+        return linhaO + colunaO + linhaD + colunaD + "";
     }
 }

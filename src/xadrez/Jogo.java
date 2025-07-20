@@ -13,13 +13,12 @@ public class Jogo {
     private Peca[] pecasP = new Peca[16];
     private Peca[] pecasB = new Peca[16];
     private int turno;
-    private Jogada[] jogadas = new Jogada[100];
+    private Jogada[] jogadas = new Jogada[1000]; //1000 é um limite muito superior a quantidade de jogadas medias de uma partida de xadrez
     public Jogo(){
         
     }
     public boolean jogar(){
-    
-    
+        
     
     
         return true;
@@ -31,17 +30,17 @@ public class Jogo {
          
         //realiza a jogada
         realizarJogada(linhaO,colunaO,linhaD,colunaD);
-        //registro da jogada
-        registrarJogada(linhaO,colunaO,linhaD,colunaD);
         return true;
     }
     public void realizarJogada(int linhaO, char colunaO, int linhaD, char colunaD){
         
     }
     public String registroJogo(){
-        return historico; //Retorno uma String no formato "nome-cor\nnome-cor\njogada1\njogada2\n...jogadax\n
-    }
-    private void registrarJogada(int linhaO, char colunaO, int linhaD, char colunaD){
-        historico = historico+"\n"+linhaO+colunaO+linhaD+colunaD; //Byte usado ao invés de int para economizar espaço
+        String temp;
+        temp = jogadores[0].getNome() + " - Peca brancas" +"\n" + jogadores[1].getNome() + " - Pecas pretas";
+        for(int i = 0; i < turno; i++){
+            temp += "\n" + jogadas[i].getJogada();
+        }
+        return temp; //Retorno uma String no formato "nome-cor\nnome-cor\njogada1\njogada2\n...jogadax\n
     }
 }

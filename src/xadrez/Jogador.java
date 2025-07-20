@@ -12,8 +12,8 @@ public class Jogador {
     private final String nome;
     private final char cor;
     private Peca[] pecas = new Peca[16];
-    
     private Scanner ler;
+    
     public Jogador(String nome, char cor, Peca[] p, Scanner l){
         ler = l;
         this.nome = nome;
@@ -24,14 +24,14 @@ public class Jogador {
     }
     public String informaJogada(){
         String temp;
-        System.out.println("Digite sua jogada ou \"parar\" para encerrar o jogo");
+        System.out.println("Digite sua jogada no formato (1a2b) ou \"parar\" para encerrar o jogo");
         temp = ler.nextLine();
         return temp;
     }
     public String pecasCapturadas(){
         String temp = null;
         for(int i = 0; i < 16; i++){
-            if(pecas[i].capturada){
+            if(pecas[i].getCapturada()){
              temp = temp + pecas[i].desenho() + " ";   
             }
         }
@@ -40,11 +40,10 @@ public class Jogador {
         }
         return temp;
     }
+    public String getNome(){
+        return nome;
+    }
     public char getCor(){
         return cor;
-    }
-    private static void limparBuffer(Scanner ler){
-        ler.nextLine(); //Sempre que usar um ler.next que não consome \n, limpar o buffer de 
-                        //entrada impede leituras inesperadas. tambem serve pra limpar o buffer em caso de exception
     }
 }
