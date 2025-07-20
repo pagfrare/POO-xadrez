@@ -1,10 +1,10 @@
 package xadrez;
-import java.util.ArrayList;
-
 /**
  *
- * @author Felipe Ferreira Barros
+ * @author G1 (Felipe(834688), Felipe(834732), Pedro(834765))
+ *
  */
+import java.util.ArrayList;
 public class Caminho {
     private ArrayList<Casa> sequencia;
     
