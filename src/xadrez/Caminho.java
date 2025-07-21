@@ -39,8 +39,8 @@ public class Caminho {
     }
 
     public Casa casaFinal() {
-        int linha = Character.getNumericValue(caminho.charAt(caminho.length() - 1));
-        char coluna = caminho.charAt(caminho.length());
+        int linha = Character.getNumericValue(caminho.charAt(caminho.length() - 2));
+        char coluna = caminho.charAt(caminho.length() - 1);
 
         return (tabuleiro.getCasa(linha, coluna));
     }
