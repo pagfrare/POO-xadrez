@@ -39,6 +39,7 @@ public class Jogo {
             }
         }  
         ler = l;
+        tabuleiro = new Tabuleiro(pecasP, pecasB);
     }
     public void criarJogador(){
         System.out.println("insira o nome do jogador 1 (pecas brancas)");
@@ -58,7 +59,9 @@ public class Jogo {
             boolean valido;
             do {
                 temp = jogadores[turno % 2].informaJogada();
-
+                if(temp.toLowerCase().equals("parar")){
+                    return false;
+                }
                 //transforma a string em algo facimente usado
                 int lo = Character.getNumericValue(temp.charAt(0));
                 char co = temp.charAt(1);

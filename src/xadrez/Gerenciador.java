@@ -29,11 +29,13 @@ public class Gerenciador {
         */
         Scanner ler = new Scanner(System.in);
         File save = null;
-        System.out.println("o que deseja fazer?");
-        System.out.println("1 - novo jogo\n2 - carregar jogo\n3 - encerrar programa");
-        int op = getInt(ler);
+        int op;
         Jogo jogo = new Jogo(ler);
         while(true){
+            System.out.println("o que deseja fazer?");
+            System.out.println("1 - novo jogo\n2 - carregar jogo\n3 - encerrar programa");
+            op = getInt(ler);
+            int temp;
             switch (op) {
                 default:
                     System.out.println("insira uma função valida");
@@ -42,17 +44,34 @@ public class Gerenciador {
                     jogo.criarJogador();
                     jogo.jogar();
                     System.out.println("Deseja salvar o jogo?\n1 - sim\n2- nao");
-                    int temp = getInt(ler);
+                    temp = getInt(ler);
                     if (temp == 2) {
                         break;
                     }
                     System.out.println("digite o nome do save");
-                    criarSave(ler.nextLine(), save);
+                    save = criarSave(ler.nextLine(), save);
+                    if(save == null){
+                        System.out.println("Erro ao criar o save");
+                        break;
+                    }
                     salvar(save, jogo.registroJogo());
                     break;
                 case 2:
                     System.out.println("digite o nome do save");
-                    lerSave(ler.nextLine(), save, ler, jogo);
+                    lerSave(ler.nextLine(), save, jogo);
+                    jogo.jogar();
+                    System.out.println("Deseja salvar o jogo?\n1 - sim\n2- nao");
+                    temp = getInt(ler);
+                    if (temp == 2) {
+                        break;
+                    }
+                    System.out.println("digite o nome do save");
+                    save = criarSave(ler.nextLine(), save);
+                    if(save == null){
+                        System.out.println("Erro ao criar o save");
+                        break;
+                    }
+                    salvar(save, jogo.registroJogo());
                     break;
                 case 3:
                     return;
@@ -60,7 +79,7 @@ public class Gerenciador {
         }
         
     }
-    private static boolean criarSave(String nome, File save){
+    private static File criarSave(String nome, File save){
         for(int i = 1;i <= 10; i++){
             try{
                 if(i == 1){ //tenta criar o arquivo com o nome pedido
@@ -69,21 +88,25 @@ public class Gerenciador {
                     save = new File(nome + "("+i+")"  + ".txt");
                 }            
                 if(save.createNewFile()){
-                    return true;
+                    System.out.println("save criado com sucesso");
+                    return save;
                 }
             }catch(IOException e){
                 System.out.println("Ocorreu um erro ao criar o save file");
-                return false;
+                return null;
             }
         }
-        return false;
+        return null;
     }
-    private static boolean lerSave(String nome, File lerSave, Scanner leitor, Jogo jogo){
+    private static boolean lerSave(String nome, File lerSave,Jogo jogo){
         try{
             lerSave = new File(nome + ".txt");
-            leitor = new Scanner(lerSave);
+            Scanner leitor = new Scanner(lerSave);
+            jogo.criarJogador(leitor.nextLine().replace(" - Peca brancas",""),leitor.nextLine().replace(" - Pecas pretas",""));
+            String temp;
             while(leitor.hasNextLine()){
-                
+                temp = leitor.nextLine();
+                jogo.realizarJogada(Character.getNumericValue(temp.charAt(0)), temp.charAt(1),Character.getNumericValue(temp.charAt(2)), temp.charAt(3));
             }
         }catch(FileNotFoundException e){
             System.out.println("Nao ha um save com esse nome");
