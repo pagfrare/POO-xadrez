@@ -10,7 +10,7 @@ public class Tabuleiro {
 
     //Inicializa o tabuleiro com as casas
     public Tabuleiro(Peca[] pecaP, Peca[] pecaB) {
-        //0-8 peoes; 9 - 10 torres; 11-12 cavalos; 13-14 bispos; 15 Dama; 16 rei;
+        //0-7 peoes; 8 - 9 torres; 10-11 cavalos; 12-13 bispos; 14 Dama; 15 rei;
         tabuleiro = new Casa[8][8];
         for (int linha = 0; linha < 8; linha++) {
             for (int coluna = 0; coluna < 8; coluna++) {
@@ -19,42 +19,41 @@ public class Tabuleiro {
             }
         }
         for (int i = 0; i < 8; i++) {
-            tabuleiro[1][i].setOcupada(pecaP[i]);
-            tabuleiro[6][i].setOcupada(pecaB[i]);
+            tabuleiro[1][i].setOcupada(pecaB[i]);
+            tabuleiro[6][i].setOcupada(pecaP[i]);
         }
-        tabuleiro[0][0].setOcupada(pecaP[9]);
-        tabuleiro[0][7].setOcupada(pecaP[10]);
-        tabuleiro[7][0].setOcupada(pecaB[9]);
-        tabuleiro[7][7].setOcupada(pecaB[10]);
-        tabuleiro[0][1].setOcupada(pecaP[11]);
-        tabuleiro[0][6].setOcupada(pecaP[12]);
-        tabuleiro[7][1].setOcupada(pecaB[11]);
-        tabuleiro[7][6].setOcupada(pecaB[12]);
-        tabuleiro[0][2].setOcupada(pecaP[13]);
-        tabuleiro[0][5].setOcupada(pecaP[14]);
-        tabuleiro[7][2].setOcupada(pecaB[13]);
-        tabuleiro[7][5].setOcupada(pecaB[14]);
-        tabuleiro[0][3].setOcupada(pecaP[15]);
-        tabuleiro[7][3].setOcupada(pecaB[15]);
-        tabuleiro[0][4].setOcupada(pecaP[16]);
-        tabuleiro[7][4].setOcupada(pecaB[16]);
+        tabuleiro[0][0].setOcupada(pecaB[8]);
+        tabuleiro[0][7].setOcupada(pecaB[9]);
+        tabuleiro[7][0].setOcupada(pecaP[10]);
+        tabuleiro[7][7].setOcupada(pecaP[9]);
+        tabuleiro[0][1].setOcupada(pecaB[10]);
+        tabuleiro[0][6].setOcupada(pecaB[11]);
+        tabuleiro[7][1].setOcupada(pecaP[10]);
+        tabuleiro[7][6].setOcupada(pecaP[11]);
+        tabuleiro[0][2].setOcupada(pecaB[12]);
+        tabuleiro[0][5].setOcupada(pecaB[13]);
+        tabuleiro[7][2].setOcupada(pecaP[12]);
+        tabuleiro[7][5].setOcupada(pecaP[13]);
+        tabuleiro[0][3].setOcupada(pecaB[14]);
+        tabuleiro[7][3].setOcupada(pecaP[14]);
+        tabuleiro[0][4].setOcupada(pecaB[15]);
+        tabuleiro[7][4].setOcupada(pecaP[15]);
 
     }
 
     //Desenha o tabuleiro na tela
     public String desenho() {
-        String resultado = "";
+        String resultado = "  a b c d e f g h\n\n";
         for (int linha = 0; linha < 8; linha++) {
+            resultado += linha + "  ";
             for (int coluna = 0; coluna < 8; coluna++) {
                 if (tabuleiro[linha][coluna].estaOcupada()) {
                     Peca p = tabuleiro[linha][coluna].getPeca();
-                    p.desenho();
-                    continue;
-                }
-                if (tabuleiro[linha][coluna].getCor() == 'P') {
-                    System.out.println("1");
+                    resultado += p.desenho()+ " ";
+                }else if (tabuleiro[linha][coluna].getCor() == 'P') {
+                    resultado += "1 ";
                 } else {
-                    System.out.println("0");
+                    resultado += "0 ";
                 }
             }
             resultado += "\n";
