@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.InputMismatchException;
+import java.io.FileWriter;
 
 public class Gerenciador {
     public static void main(String[] args) {
@@ -26,6 +27,7 @@ public class Gerenciador {
         System.out.println(c.caminho(4, 'e', 3, 'g'));
         System.out.println(c.caminho(4, 'e', 3, 'c'));
         */
+        
     }
     private static boolean criarSave(String nome, File save){
         for(int i = 1;i <= 10; i++){
@@ -55,6 +57,15 @@ public class Gerenciador {
             return false;
         }
         return true;
+    }
+    private static void salvar(File save, String dados){
+        try{
+            FileWriter salvar = new FileWriter(save.getName());
+            salvar.write(dados);
+            salvar.close();
+        }catch(IOException e){
+            System.out.println("Ocorreu um erro");
+        }
     }
     private static double getDouble(Scanner ler){
         double temp = 0;
