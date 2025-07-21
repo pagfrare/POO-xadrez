@@ -2,7 +2,8 @@ package xadrez;
 
 /**
  *
- * @author G1 (Felipe(834688), Felipe(834732), Pedro(834765))
+ * @author G1 (Felipe Ferreira(834688), Felipe da Rocha(834732), Pedro
+ * Augusto(834765), João Henrique(822428))
  */
 public class Cavalo extends Peca {
 
@@ -25,21 +26,20 @@ public class Cavalo extends Peca {
         }
         int diferencaLinha = linhaO - linhaD;
         int diferencaColuna = colunaO - colunaD;
-        if(diferencaLinha < 0) {
+        if (diferencaLinha < 0) {
             diferencaLinha = -diferencaLinha;
         }
-        if(diferencaColuna < 0) {
+        if (diferencaColuna < 0) {
             diferencaColuna = -diferencaColuna;
         }
-        
-        if(diferencaLinha == 2 && diferencaColuna == 1) {
+
+        if (diferencaLinha == 2 && diferencaColuna == 1) {
             return true;
         }
-        if(diferencaLinha == 1 && diferencaColuna == 2) {
+        if (diferencaLinha == 1 && diferencaColuna == 2) {
             return true;
         }
-        
-        
+
         return false;
     }
 

@@ -2,10 +2,10 @@ package xadrez;
 
 /**
  *
- * @author G1 (Felipe Ferreira(834688), Felipe da Rocha(834732), Pedro Augusto(834765), João Henrique(822428))
+ * @author G1 (Felipe Ferreira(834688), Felipe da Rocha(834732), Pedro
+ * Augusto(834765), João Henrique(822428))
  *
  */
-
 public abstract class Peca {
 
     // B para branco e P para preto
@@ -24,10 +24,11 @@ public abstract class Peca {
 
     protected abstract String caminho(int linhaO, char colunaO, int linhaD, char colunaD);
 
-    public char getCor(){
+    public char getCor() {
         return cor;
     }
-    public boolean getCapturada(){
+
+    public boolean getCapturada() {
         return capturada;
     }
 
