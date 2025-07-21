@@ -14,7 +14,7 @@ public class Tabuleiro {
         tabuleiro = new Casa[8][8];
         for (int linha = 0; linha < 8; linha++) {
             for (int coluna = 0; coluna < 8; coluna++) {
-                char cor = ((linha + coluna) % 2 == 0) ? 'B' : 'P';
+                char cor = ((linha + coluna) % 2 == 0) ? 'P' : 'B';
                 tabuleiro[linha][coluna] = new Casa(cor, linha, (char) ((coluna) + 'a'));
             }
         }
@@ -43,7 +43,7 @@ public class Tabuleiro {
 
     //Desenha o tabuleiro na tela
     public String desenho() {
-        String resultado = "  a b c d e f g h\n\n";
+        String resultado = "letras maiusculas sao as Pretas, as minusculas sao as Brancas\n  a b c d e f g h\n\n";
         for (int linha = 0; linha < 8; linha++) {
             resultado += linha + "  ";
             for (int coluna = 0; coluna < 8; coluna++) {
