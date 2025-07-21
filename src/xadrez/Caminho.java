@@ -24,7 +24,7 @@ public class Caminho {
             linha = Character.getNumericValue(caminho.charAt(i));
             coluna = caminho.charAt(i + 1);
             Casa c = tabuleiro.getCasa(linha, coluna);
-            if (c.getOcupada() != null) {
+            if (c.getPeca() != null) {
                 return false;
             }
         }
