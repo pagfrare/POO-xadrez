@@ -40,6 +40,16 @@ public class Jogo {
         }  
         ler = l;
     }
+    public void criarJogador(){
+        System.out.println("insira o nome do jogador 1 (pecas brancas)");
+        jogadores[0] = new Jogador(ler.nextLine(),'B', pecasB, ler);
+        System.out.println("insira o nome do jogador 2 (pecas pretas)");
+        jogadores[1] = new Jogador(ler.nextLine(),'P', pecasP, ler);
+    }
+    public void criarJogador(String nome1, String nome2){
+        jogadores[0] = new Jogador(nome1,'B',pecasB,ler);
+        jogadores[1] = new Jogador(nome2,'P',pecasP,ler);
+    }
     public boolean jogar(){
         String temp;
         boolean xeque = false;

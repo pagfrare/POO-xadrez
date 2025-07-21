@@ -27,6 +27,37 @@ public class Gerenciador {
         System.out.println(c.caminho(4, 'e', 3, 'g'));
         System.out.println(c.caminho(4, 'e', 3, 'c'));
         */
+        Scanner ler = new Scanner(System.in);
+        File save = null;
+        System.out.println("o que deseja fazer?");
+        System.out.println("1 - novo jogo\n2 - carregar jogo\n3 - encerrar programa");
+        int op = getInt(ler);
+        Jogo jogo = new Jogo(ler);
+        while(true){
+            switch (op) {
+                default:
+                    System.out.println("insira uma função valida");
+                    break;
+                case 1:
+                    jogo.criarJogador();
+                    jogo.jogar();
+                    System.out.println("Deseja salvar o jogo?\n1 - sim\n2- nao");
+                    int temp = getInt(ler);
+                    if (temp == 2) {
+                        break;
+                    }
+                    System.out.println("digite o nome do save");
+                    criarSave(ler.nextLine(), save);
+                    salvar(save, jogo.registroJogo());
+                    break;
+                case 2:
+                    System.out.println("digite o nome do save");
+                    lerSave(ler.nextLine(), save, ler, jogo);
+                    break;
+                case 3:
+                    return;
+            }
+        }
         
     }
     private static boolean criarSave(String nome, File save){
@@ -41,12 +72,13 @@ public class Gerenciador {
                     return true;
                 }
             }catch(IOException e){
+                System.out.println("Ocorreu um erro ao criar o save file");
                 return false;
             }
         }
         return false;
     }
-    private static boolean lerSave(String nome, File lerSave, Scanner leitor){
+    private static boolean lerSave(String nome, File lerSave, Scanner leitor, Jogo jogo){
         try{
             lerSave = new File(nome + ".txt");
             leitor = new Scanner(lerSave);
@@ -54,6 +86,7 @@ public class Gerenciador {
                 
             }
         }catch(FileNotFoundException e){
+            System.out.println("Nao ha um save com esse nome");
             return false;
         }
         return true;
@@ -64,24 +97,8 @@ public class Gerenciador {
             salvar.write(dados);
             salvar.close();
         }catch(IOException e){
-            System.out.println("Ocorreu um erro");
+            System.out.println("Ocorreu um erro ao salvar");
         }
-    }
-    private static double getDouble(Scanner ler){
-        double temp = 0;
-        boolean valido;
-        do{
-            try{
-                valido = true;
-                temp = ler.nextDouble();
-                limparBuffer(ler);
-            }catch(InputMismatchException e){
-                valido = false;
-                System.out.println("Digite um numero valido");
-                limparBuffer(ler);
-            }
-        }while(!valido);
-        return temp;
     }
     private static int getInt(Scanner ler){
         int temp = 0;
