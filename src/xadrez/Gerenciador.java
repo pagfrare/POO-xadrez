@@ -294,8 +294,8 @@ public class Gerenciador {
         System.out.println("Esperado: true | Obtido: " + jogo.jogadaValida(2, 'a', 3, 'a'));
         if (jogo.jogadaValida(2, 'a', 3, 'a')) {
             jogo.realizarJogada(2, 'a', 3, 'a');
-            System.out.println("Tabuleiro após jogada:");
-            System.out.println(jogo.tabuleiro.desenho());
+            //System.out.println("Tabuleiro após jogada:");
+            //System.out.println(jogo.tabuleiro.desenho());
         }
 
         System.out.println("Histórico do jogo:");
