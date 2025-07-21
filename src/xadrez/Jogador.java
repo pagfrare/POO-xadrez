@@ -5,8 +5,6 @@ package xadrez;
  * @author G1 (Felipe Ferreira(834688), Felipe da Rocha(834732), Pedro Augusto(834765), João Henrique(822428))
  *
  */
-
-import java.util.InputMismatchException;
 import java.util.Scanner;
 public class Jogador {
     private final String nome;

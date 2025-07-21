@@ -56,11 +56,15 @@ public class Jogo {
         boolean xeque = false;
         for(turno = 0; turno <10000; turno++){
             System.out.println(tabuleiro.desenho());
-            boolean valido;
+            boolean valido = false;
             do {
                 temp = jogadores[turno % 2].informaJogada();
                 if(temp.toLowerCase().equals("parar")){
                     return false;
+                }
+                if(temp.length()!= 4){
+                    System.out.println("Digite 4 digitos, no formato 1a2b,onde 1a representa a origem e 2b o destino");
+                    continue;
                 }
                 //transforma a string em algo facimente usado
                 int lo = Character.getNumericValue(temp.charAt(0));
@@ -72,16 +76,16 @@ public class Jogo {
                 valido = jogadaValida(lo, co, ld, cd);
             } while (!valido);
             //muda o estado com base se for xeque ou mate
-            if(jogadas[turno].ehXeque()){
-                estado = 1;
-            }else if(jogadas[turno].ehXequeMate()){
+            if(jogadas[turno].ehXequeMate()){
                 estado = 2;
+            }else if(jogadas[turno].ehXeque()){
+                estado = 1;
             }
                 
             //decide o que fazer dependendo do estado e se continua em xeque(virou xeque mate sem defesa)    
             if(estado == 0){
                 xeque = false;
-            }else if (xeque = true){
+            }else if (xeque == true){
                 estado = 2;
                 break;
             }else if(estado == 1){
@@ -93,16 +97,15 @@ public class Jogo {
         return true;
     }
     public boolean jogadaValida(int linhaO, char colunaO, int linhaD, char colunaD){
-        //validação da jogada
-         
-        /* incluir verificação aqui e retornar falso caso inválido*/
-         
-        //realiza a jogada
-        realizarJogada(linhaO,colunaO,linhaD,colunaD);
-        return true;
+        return jogadas[turno].ehValida();
     }
     public void realizarJogada(int linhaO, char colunaO, int linhaD, char colunaD){
-        
+        Peca temp = tabuleiro.getCasa(linhaO,colunaO).getPeca();
+        tabuleiro.getCasa(linhaO,colunaO).setOcupada(null);
+        if(tabuleiro.getCasa(linhaD,colunaD).estaOcupada()){
+            tabuleiro.getCasa(linhaD,colunaD).getPeca().capturar();
+        }
+        tabuleiro.getCasa(linhaD,colunaD).setOcupada(temp);
     }
     public String registroJogo(){
         String temp;

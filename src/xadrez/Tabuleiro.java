@@ -6,9 +6,6 @@ package xadrez;
  * Augusto(834765), João Henrique(822428))
  */
 public class Tabuleiro {
-
-    private int linha;
-    private int coluna;
     private Casa[][] tabuleiro;
 
     //Inicializa o tabuleiro com as casas

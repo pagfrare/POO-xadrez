@@ -103,16 +103,12 @@ public class Jogada {
         }
 
         return false;
-
-    }
-
+    }  
     public boolean ehXequeMate() {
         if (!ehXeque()) {
             return false;
         }
-
         char corRei = jogador.getCor();
-
         Casa casaRei = null;
         for (int i = 1; i <= 8; i++) {
             for (char j = 'a'; j <= 'h'; j++) {
@@ -130,14 +126,11 @@ public class Jogada {
         if (casaRei == null) {
             return true;
         }
-
         int linhaRei = casaRei.getLinha();
         char colunaRei = casaRei.getColuna();
         Peca pecaRei = casaRei.getPeca();
-
         int[] dr = {-1, -1, -1, 0, 0, 1, 1, 1};
         int[] dc = {-1, 0, 1, -1, 1, -1, 0, 1};
-
         for (int i = 0; i < 8; i++) {
             int novaLinhaRei = linhaRei + dr[i];
             char novaColunaRei = (char) (colunaRei + dc[i]);
@@ -163,7 +156,6 @@ public class Jogada {
                 casaDestinoRei.setOcupada(pecaNaDestinoOriginal);
             }
         }
-
         for (int lOrigem = 1; lOrigem <= 8; lOrigem++) {
             for (char cOrigem = 'a'; cOrigem <= 'h'; cOrigem++) {
                 Casa casaOrigem = tabuleiro.getCasa(lOrigem, cOrigem);
@@ -197,7 +189,6 @@ public class Jogada {
                 }
             }
         }
-
         return true;
     }
 
